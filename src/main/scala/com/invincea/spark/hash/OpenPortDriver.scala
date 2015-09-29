@@ -32,7 +32,7 @@ object OpenPortApp {
       //take a random sample of the data      
       val sample = port_set_filtered.sample(false, data_sample).repartition(partitions)
 
-      //include index with each point sample
+      //include index with each point sample //IMP This is where the customer/ASIN index can be stored as key
       val points = sample.zipWithIndex().map(x => x.swap)
 
       //convert points to vectors
